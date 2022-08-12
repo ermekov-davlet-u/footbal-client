@@ -1,0 +1,44 @@
+
+.menu{
+    width: 100%;
+    height: 100%;
+    min-width: 1840px;
+    max-height: 780px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(245, 228, 204);
+}
+.container{
+    width: 1660px;
+    padding: 14rem;
+    position: relative;
+}
+.manu_nav{
+
+}
+.menu_ul{
+    font-size: 32px;
+    font-weight: 900;
+    color: burlywood;
+    list-style: none;
+}
+.menu_li{
+    padding: 8px 18px;
+}
+.menu_link{
+    color: burlywood;
+    text-decoration: none;
+    &:hover{
+        color: aqua;
+    }
+}
+.close_btn_wrap{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 120;
+    right: 48px;
+}
+.close_btn{
+    color: rgb(75, 42, 0);
+}
