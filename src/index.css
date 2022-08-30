@@ -7,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(49, 49, 49);
+  color: aliceblue;
 }
 
 code {
@@ -55,4 +57,15 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+.main{
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+.booked{
+	background-color: rgb(186, 197, 194);
+	color: rgb(54, 54, 54);
 }

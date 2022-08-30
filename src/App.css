@@ -1,2 +1,79 @@
 
+.App{
+    margin: 0;
+    padding: 0;
+}
+
+.game{
+    max-width: 100%;
+    
+    width: 1840px;
+    margin: 0 auto;
+    padding: 0 36px;
+    margin-top: 48px;
+}
+.game_title{
+    
+}
+.game_container{
+    width: 100%;
+}
+
+.game_container{
+    
+}
+.game_table{
+
+}
+.table_header{
+    padding: 12px;
+    margin: 12px 0;
+    font-weight: 700;
+    text-align: center;
+    font-size: 24px;
+    cursor: default;
+}
+.game_table_headers{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
+    grid-gap: 8px 8px;
+    grid-auto-rows:  minmax(100px, 1fr);
+}
+.game_table_content{
+    display: flex;
+    max-width: calc(100% - 78px);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 8px 8px;
+    grid-auto-rows:  minmax(40px, 1fr);
+}
+.content_row{
+    margin-bottom: 12px;
+}
+.table_row{
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 6px 0;
+    font-size: 18px;
+}
+
+.table_row:hover{
+    background-color: rgb(186, 197, 194);
+	color: rgb(54, 54, 54);
+}
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .mainSlider {
+    background: #eca;
+  }
+  h3 {
+    text-align: center;
+  }
 
