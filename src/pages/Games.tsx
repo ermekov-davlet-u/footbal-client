@@ -6,15 +6,20 @@ import TSportCard from "../component/tsport/TSportCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useAppDispatch, useAppSelector } from './../store/hook';
+import { newPoles } from "../store/slice/poleSlice";
 
 
 function Games() {
 
     const [ weekDay, setWeekDay ] = useState<Date[]>([]);
-
+    const [ book, setBook ] = useState<any[]>([]);
+    const { pole } = useAppSelector(state => state.pole)
+    const [currentPole, setCurrentPole] = useState<number>(0)
+    const dispatch = useAppDispatch()
     const getWeekDay = () => {
         const date = new Date();
-        const dayNums = [ 1, 1, 1, 1, 1, 1, 1 ];
+        const dayNums = [ 0, 1, 1, 1, 1, 1, 1 ];
         const a = dayNums.map( ( item: number ) => {
             return new Date(date.setDate( date.getDate() + item ));
         })
@@ -82,12 +87,26 @@ function Games() {
             timeName: "24:00"
         }
     ]
+    async function getBook() {
+        const res = await fetch("http://localhost:3000/book").then(res => res.json());
+        setBook(res)
+    } 
+    async function getPoles() {
+        const res = await fetch("http://localhost:3000/pole").then(res => res.json());
+        dispatch(newPoles(res))
+    } 
 
     useEffect(() => {
         getWeekDay()
         setNav1(slider1.current);
         setNav2(slider2.current);
+        getBook()
+        getPoles()
     }, [])
+
+    const hundlePole = (idPole: number) => {
+        setCurrentPole(idPole)
+    }
 
     return ( 
         <>
@@ -97,24 +116,17 @@ function Games() {
                         asNavFor={nav1}
                         slidesToShow={3}
                         swipeToSlide={true}>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
-                        <div style={{background: "white", height: "280px"}}>
-                            <TSportCard />
-                        </div>
+                        {
+                            pole.map(pole => {
+                                return(
+                                    <div className="slider_wrap" onClick={() => {
+                                        hundlePole(pole.idPole)
+                                    }}>
+                                        <TSportCard title={pole.name} club={pole.club.clubName} adrees={pole.club.adres} />
+                                    </div>
+                                )
+                            })
+                        }
                     </Slider>
                     </div>
                 <div className="game">
@@ -135,23 +147,36 @@ function Games() {
                                                     }
                                                 </div>
                                                 {
-                                                    times.map(time => {
+                                                    times.map((time, i) => {
+                                                        const a = book.find(b => (new Date(b.dateBook).toLocaleDateString() == day.toLocaleDateString()) &&
+                                                        (b.time.idTime == time.idTime))
+                                                        if(a){
+                                                            return (
+                                                                <div className="table_row active" onClick={() => {
+                                                                        console.log(time.idTime, day)
+                                                                    }}>
+                                                                    {
+                                                                        time.timeName
+                                                                    }
+                                                                </div>
+                                                            )
+                                                        }
                                                         return (
                                                             <div className="table_row" onClick={() => {
-                                                                    console.log(time.idTime, day)
+                                                                    console.log(time.idTime, day, currentPole)
                                                                 }}>
                                                                 {
                                                                     time.timeName
                                                                 }
                                                             </div>
                                                         )
+                                                
                                                     })
                                                 }
                                             </div>
                                         )
                                     })
                                 }
-                                
                             </div>
                         </div>
                     </div>

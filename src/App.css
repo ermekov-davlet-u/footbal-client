@@ -66,6 +66,10 @@
     background-color: rgb(186, 197, 194);
 	color: rgb(54, 54, 54);
 }
+.active{
+    background-color: rgb(186, 197, 194);
+	color: rgb(54, 54, 54);
+}
 .App {
     font-family: sans-serif;
     text-align: center;
@@ -76,4 +80,7 @@
   h3 {
     text-align: center;
   }
-
+.slider_wrpa{
+    background: "white"; 
+    height: "280px";
+}

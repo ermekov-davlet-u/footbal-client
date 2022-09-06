@@ -1,8 +1,11 @@
 
 import { configureStore } from '@reduxjs/toolkit'
+import poleReducer from "./slice/poleSlice"
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    pole: poleReducer
+  },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

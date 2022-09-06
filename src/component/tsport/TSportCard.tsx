@@ -1,6 +1,16 @@
 import classes from "./TSport.module.scss";
 
-function TSportCard() {
+interface ITSportCardPropType {
+    title?: string;
+    adrees?: string;
+    club?: string;
+}
+
+function TSportCard({
+    title= "Тест",
+    adrees= "Тест",
+    club= "Тест",
+}: ITSportCardPropType) {
     return ( 
         <section className={classes.tscard}>
             <div className={classes.stcard_bg}>
@@ -8,14 +18,20 @@ function TSportCard() {
             </div>
             <div className={classes.container}>
                 <h3 className={classes.title}>
-                    Lorem ipsum dolor sit.
+                    {
+                        title
+                    }
                 </h3>
                 <div className={classes.content}>
                     <button className={classes.btn}>
-                        More info ...
+                        {
+                            club
+                        }
                     </button>
                     <a href="#" className={classes.link}>
-                        Зал расположен по адресу ул. Смольная, 12
+                        {
+                            adrees
+                        }
                     </a>
                 </div>
             </div>
