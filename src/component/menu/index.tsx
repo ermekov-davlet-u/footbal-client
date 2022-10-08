@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { CSSProperties, useState } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Menu.module.scss"
-import { AiFillCloseSquare } from "react-icons/ai"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { ImInstagram } from "react-icons/im"
 import { VscChromeClose } from "react-icons/vsc"
@@ -31,7 +30,6 @@ function Menu() {
             opacity: 0
         })
     }
-    console.log(JSON.stringify(new Date()))
 
     return ( 
         <>
@@ -73,7 +71,7 @@ function Menu() {
                                 }}>
                                     <NavLink style={({ isActive }) =>
                                         isActive ? activeStyle : {}
-                                        } className={classNames(classes.menu_link)} to="/forme" >Для вас</NavLink>
+                                        } className={classNames(classes.menu_link)} to="/forme/club" >Для вас</NavLink>
                                 </li>
                                 <li className={classes.menu_li} onClick={() => {
                                     hideMenu()
@@ -88,6 +86,13 @@ function Menu() {
                                     <NavLink style={({ isActive }) =>
                                         isActive ? activeStyle : {}
                                         } className={classNames(classes.menu_link)} to="/map" >Карта</NavLink>
+                                </li>
+                                <li className={classes.menu_li} onClick={() => {
+                                    hideMenu()
+                                }}>
+                                    <NavLink style={({ isActive }) =>
+                                        isActive ? activeStyle : {}
+                                        } className={classNames(classes.menu_link)} to="/login" >Вход</NavLink>
                                 </li>
                                 <li className={classes.menu_li} onClick={() => {
                                     hideMenu()

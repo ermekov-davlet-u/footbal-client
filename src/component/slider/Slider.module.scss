@@ -4,6 +4,9 @@ $width: calc(100% - 24px);
 .slider{
     width: $width;
     padding: 36px 12px;
+    @media screen and (max-width: 1080px){
+        width: 100%;
+    }
     .container{
         max-width: 100%;
         position: relative;
@@ -11,9 +14,16 @@ $width: calc(100% - 24px);
         height: 650px;
         display: grid;
         grid-template-columns: 2fr 5fr;
+        @media screen and (max-width: 1280px){
+            grid-template-columns: 2fr 4fr;
+        }
+        @media screen and (max-width: 1080px){
+            grid-template-columns: 1fr;
+            grid-auto-rows: 148px 1fr;
+
+        }
     }
     .slide{
-        
         position: relative;
     }
     .swipe{
@@ -22,7 +32,10 @@ $width: calc(100% - 24px);
         display: grid;
         grid-gap: 24px;
         grid-template-columns: 264px;
+        @media screen and (max-width: 1080px){
+            display: flex;
 
+        }
     }
 }
 
@@ -30,14 +43,16 @@ $width: calc(100% - 24px);
 
 .card{
     cursor: pointer;
-    width: 360px;
+    width: 320px;
     max-height: 220px;
     padding: 12px;
     background: rgb(42,115,130);
     background: linear-gradient(90deg, rgba(42,115,130,1) 0%, rgba(141,200,212,1) 23%, rgba(189,225,233,1) 100%);
     box-shadow: 0 0 8px 1px rgb(63, 132, 163);
     transition: .2 ease-in;
-    
+    @media screen and (max-width: 480px){
+        width: 220px;
+    }
     .card_container{
         width: calc(100% - 24px);
         display: flex;
@@ -45,6 +60,7 @@ $width: calc(100% - 24px);
     }
     .image{
         width: 82px;
+        min-width: 82px;
         height: 82px;
         border-radius: 50%;
         overflow: hidden;
@@ -73,7 +89,7 @@ $width: calc(100% - 24px);
 }
 
 .active{
-    width: 380px !important;
+    width: 360px !important;
     padding: 18px;
     transition: .4 ease-in-out;
     background: linear-gradient(90deg, rgb(44, 95, 105) 0%, rgb(182, 227, 236) 23%, rgb(255, 255, 255) 100%);
@@ -84,6 +100,10 @@ $width: calc(100% - 24px);
     background: #fff;
     padding: 24px;
     position: relative;
+    @media screen and (max-width: 1080px){
+        margin-left: 0;
+
+    }
     .bg{
         position: absolute;
         width: calc(100% - 48px);

@@ -1,0 +1,28 @@
+
+
+.imp_wrap{
+    padding: 4px 12px 0px 12px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    width: 400px;
+    display: flex;
+    align-items: center;
+}
+.inp_label{
+    font-size: 18px;
+    margin-right: 12px;
+    width: 120px;
+    text-align: left;
+}
+.inp{
+    padding: 8px 12px 6px 6px;
+    font-size: 18px;
+    width: 280px;
+    border: none;
+    outline: none;
+    background: transparent;
+    // border-bottom: 1px solid rgb(150, 150, 150);
+    color: #ccc;
+    letter-spacing: 1px;
+    border-left: 1px solid grey;
+}

@@ -18,6 +18,10 @@
 .baner_bg_img{
     width: 100%;
     height: auto;
+    @media screen and (max-width: 1080px){
+        width: auto;
+        height: 100%;
+    }
 }
 .container{
     width: 1840px;
@@ -37,6 +41,9 @@
     font-weight: 900;
     letter-spacing: 12px;
     color: #212121;
+    @media screen and (max-width: 1080px){
+        font-size: 2rem;
+    }
 }
 .baner_text{
     max-width: 1280px;

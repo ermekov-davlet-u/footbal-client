@@ -2,32 +2,32 @@ export interface IUser{
     
 }
 
+export interface ITime{
+    idTime: number
+    timeName: string
+}
 
+export interface IClubType{
+    idClub: number,
+    clubName: string,
+    adres: string
+}
+export interface IPolePhotoType {
+    idPhoto: number,
+    url: string,
+    desc: string
+}
 export interface IPole{
     idPole: number,
     name: string,
     size: string,
     price: number,
-    photos: [
-        {
-            idPhoto: number,
-            url: string,
-            desc: string
-        },
-        {
-            idPhoto: number,
-            url: string,
-            desc: ""
-        },
-        {
-            idPhoto: number,
-            url: string,
-            desc: string
-        }
-    ],
-    club: {
-        idClub: number,
-        clubName: string,
-        adres: string
-    }
+    photos: IPolePhotoType[],
+    club: IClubType
+}
+
+
+export interface IUser {
+    userName: string;
+    token: string;
 }

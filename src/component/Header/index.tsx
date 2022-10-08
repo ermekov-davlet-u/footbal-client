@@ -1,5 +1,7 @@
 import classes from "./Header.module.scss"
-import { AiFillTwitterSquare } from "react-icons/ai"
+import { BsFacebook, BsTelegram } from "react-icons/bs"
+import { AiFillTwitterCircle, AiFillInstagram, AiOutlineWhatsApp } from "react-icons/ai"
+import classNames from 'classnames';
 
 
 function Header() {
@@ -18,15 +20,28 @@ function Header() {
                 </div>
                 <div className={classes.header_right}>
                     <div className={classes.header_icons}>
-                        <div className={classes.header_icon}>
-                            <AiFillTwitterSquare className={classes.icon} />
-                        </div>
-                        <div className={classes.header_icon}>
-                            <AiFillTwitterSquare className={classes.icon} />
-                        </div>
-                        <div className={classes.header_icon}>
-                            <AiFillTwitterSquare className={classes.icon} />
-                        </div>
+                    <ul className={classes.wrapper}>
+                        <li className={classNames(classes.icon, classes.facebook)}>
+                            <span className={classes.tooltip}>Facebook</span>
+                            <span><BsFacebook className={classes.target} /></span>
+                        </li>
+                        <li className={classNames(classes.icon, classes.twitter)}>
+                            <span className={classes.tooltip}>Twitter</span>
+                            <span><AiFillTwitterCircle className={classes.target} /></span>
+                        </li>
+                        <li className={classNames(classes.icon, classes.instagram)}>
+                            <span className={classes.tooltip}>Instagram</span>
+                            <span><AiFillInstagram className={classes.target} /></span>
+                        </li>
+                        <li className={classNames(classes.icon, classes.github)}>
+                            <span className={classes.tooltip}>Github</span>
+                            <span><AiOutlineWhatsApp className={classes.target}/></span>
+                        </li>
+                        <li className={classNames(classes.icon, classes.youtube)}>
+                            <span className={classes.tooltip}>Youtube</span>
+                            <span><BsTelegram  className={classes.target}/></span>
+                        </li>
+                    </ul>
                     </div>
                     <div className={classes.header_right_link}>
                         <a href="" className={classes.link}>

@@ -1,10 +1,12 @@
 
 import { configureStore } from '@reduxjs/toolkit'
 import poleReducer from "./slice/poleSlice"
+import timeReducer from "./slice/timeSlice"
 
 export const store = configureStore({
   reducer: {
-    pole: poleReducer
+    pole: poleReducer,
+    time: timeReducer
   },
 })
 

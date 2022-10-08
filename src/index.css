@@ -69,3 +69,18 @@ table {
 	background-color: rgb(186, 197, 194);
 	color: rgb(54, 54, 54);
 }
+
+.content_row:nth-child(even) {
+	background-color:#444;
+}
+/* .content_row:nth-child(even) {
+	background-color:#313131;
+} */
+.form_container{
+	width: calc(100% - 48px);
+	margin: 0 auto;
+
+}
+.form_groups{
+	margin-bottom: 12px;
+}
