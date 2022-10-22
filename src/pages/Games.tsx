@@ -6,25 +6,36 @@ import "slick-carousel/slick/slick-theme.css";
 import { useAppDispatch, useAppSelector } from './../store/hook';
 import { newPoles } from "../store/slice/poleSlice";
 import ConfirmModal from './../component/Modal.tsx/Confirm';
-import { IPole } from "../store/models";
+import { IBookType, IPole } from "../store/models";
 import { newTimes } from "../store/slice/timeSlice";
+import { useNavigate } from "react-router-dom";
+import { newBooks } from "../store/slice/bookSlice";
 
 
 function Games() {
-
+    const navigate = useNavigate()
     const [ weekDay, setWeekDay ] = useState<Date[]>([]);
-    const [ book, setBook ] = useState<any[]>([]);
     const [ confirmModal, setConfirmModal ] = useState<{
         show: boolean,
         idTime: number,
-        dateBook: Date | null
+        dateBook: Date | null,
+        del:{
+            bookId: number,
+            userId: number
+        }
     }>({
         show: false,
         idTime: 0,
-        dateBook : null
+        dateBook : null,
+        del:{
+            bookId: 0,
+            userId: 0
+        }
     });
     const { times } = useAppSelector(state => state.time)
     const { pole } = useAppSelector(state => state.pole)
+    const { user } = useAppSelector(state => state.user)
+    const { books } = useAppSelector(state => state.book)
     const [currentPole, setCurrentPole] = useState<IPole>({
         idPole: 0,
         name: '',
@@ -52,12 +63,14 @@ function Games() {
                 Authentication: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjQ5Nzc0OTgsImV4cCI6MTY2NDk3NzU1OH0.JjHixJ7eeC0_3LMPTCX0elsRozJ5J5OA9XgddQkdquA'
             }
         }).then(res => res.json());
-        setBook(res)
+        dispatch(newBooks(res))
     } 
+
     async function getBookByPole(id: number) {
         const res = await fetch("http://localhost:3000/book/" + id).then(res => res.json());
-        setBook(res)
+        dispatch(newBooks(res))
     } 
+
     async function getPoles() {
         const res = await fetch("http://localhost:3000/pole").then(res => res.json());
         dispatch(newPoles(res))
@@ -66,16 +79,22 @@ function Games() {
     async function getAllTime(){
         const times = await fetch("http://localhost:3000/time", {
             headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjQ5ODAwODYsImV4cCI6MTY2NTU4MDA4Nn0.Coo51YPhYG3r-KwJ9og93vZqlFmvHSOXtEdinDTwQLE",
+                "Authorization": "Bearer " + user.access_token,
                 'Content-Type': 'application/json'
             },
         })
         .then(res => res.json())
         .catch(err => {
-        console.log(err)
-        return[]
+            return[]
         });
-        dispatch(newTimes(times))
+        if(times.statusCode >= 200){
+            navigate("/login")
+            return null
+        }
+        
+        if(times){
+            dispatch(newTimes(times))
+        }
     }
 
     useEffect(() => {
@@ -83,7 +102,7 @@ function Games() {
         getBook()
         getPoles()
         getAllTime()
-    }, [])
+    }, [user.access_token])
 
     const hundlePole = (idPole: IPole) => {
         setCurrentPole( idPole )
@@ -133,11 +152,15 @@ function Games() {
     return ( 
         <>
         {
-            confirmModal.show && <ConfirmModal idTime={confirmModal.idTime} dateBook={confirmModal.dateBook} pole={currentPole} show={confirmModal.show} close={() => {
+            confirmModal.show && <ConfirmModal del={confirmModal.del} idTime={confirmModal.idTime} dateBook={confirmModal.dateBook} pole={currentPole} show={confirmModal.show} close={() => {
                 setConfirmModal({
                     show: false,
                     idTime: 0,
-                    dateBook: null
+                    dateBook: null,
+                    del:{
+                        bookId: 0,
+                        userId: 0
+                    }
                 })
                 getBookByPole(currentPole.idPole)
             }} />
@@ -178,15 +201,23 @@ function Games() {
                                                 </div>
                                                 {
                                                     times.map((time, i) => {
-                                                        const a = book.find(b => (new Date(b.dateBook).toLocaleDateString() == day.toLocaleDateString()) &&
-                                                        (b.time.idTime == time.idTime))
+                                                        const a = books.find(b => {
+                                                            return (new Date(b.dateBook).toLocaleDateString() == day.toLocaleDateString() && b.time.idTime == time.idTime)
+                                                            }
+                                                        )
+                                                        console.log(a);
+                                                        
                                                         if(a){
                                                             return (
                                                                 <div key={time.idTime} className="table_row active" onClick={() => {
                                                                         setConfirmModal({
                                                                             show: true,
                                                                             idTime: 0,
-                                                                            dateBook: day
+                                                                            dateBook: day,
+                                                                            del:{
+                                                                                bookId: a.idBook,
+                                                                                userId: a.user.id
+                                                                            }
                                                                         });
                                                                     }}>
                                                                     {
@@ -200,7 +231,11 @@ function Games() {
                                                                     setConfirmModal({
                                                                         show: true,
                                                                         idTime: time.idTime,
-                                                                        dateBook: day
+                                                                        dateBook: day,
+                                                                        del:{
+                                                                            bookId: 0,
+                                                                            userId: 0
+                                                                        }
                                                                     });
                                                                 }}>
                                                                 {

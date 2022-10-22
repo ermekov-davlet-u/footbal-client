@@ -2,6 +2,7 @@
 import FormInput from './../../component/input/FormInput';
 import { useState } from 'react';
 import Button from './../../component/button/Button';
+import ImageSlider from '../../component/slider/image/ImageSlider';
 
 interface IClubForm {
     clubName: string,
@@ -49,6 +50,8 @@ function ClubForm() {
                 <FormInput label="Адрес" value={clubForm.adres} changeInp={hundleClubFormAdres}/>
             </div>
             <Button label='Добавить' btnClick={createClub} />
+
+            
         </>
      );
 }

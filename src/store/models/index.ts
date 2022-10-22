@@ -1,6 +1,4 @@
-export interface IUser{
-    
-}
+
 
 export interface ITime{
     idTime: number
@@ -28,6 +26,20 @@ export interface IPole{
 
 
 export interface IUser {
-    userName: string;
-    token: string;
+    id: number;
+    username: string;
+    access_token: string;
 }
+
+
+export interface IBookType {
+    idBook: number,
+    done: boolean,
+    dateBook: Date,
+    pole: IPole,
+    time: ITime,
+    user: {
+        userName: string,
+        id: number
+    }
+} 

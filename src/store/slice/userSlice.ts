@@ -12,8 +12,9 @@ interface InitalState{
 const initialState: InitalState = {
     lodaing: false, 
     user: {
-        userName: '',
-        token: '',
+        id: 0,
+        username: '',
+        access_token: '',
     },
     error: null
 };

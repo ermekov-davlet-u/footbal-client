@@ -9,6 +9,10 @@ interface IConfirmModalPropType {
     pole: IPole
     idTime: number;
     dateBook: Date | null;
+    del: {
+        bookId: number;
+        userId: number;
+    }
 }
 
 function ConfirmModal({
@@ -16,10 +20,13 @@ function ConfirmModal({
     close,
     pole,
     idTime= 0,
-    dateBook= new Date()
+    dateBook= new Date(),
+    del
 }:IConfirmModalPropType) {
 
     const { times } = useAppSelector(state => state.time)
+    const { books } = useAppSelector(state => state.book)
+    const { user } = useAppSelector(state => state.user)
     const style:{
         show: CSSProperties;
         hide: CSSProperties;} = {
@@ -36,6 +43,10 @@ function ConfirmModal({
         return () => {
         }
     })
+
+    async function checkBooked(){
+
+    }
     
 
     return ( 
@@ -54,12 +65,25 @@ function ConfirmModal({
                         }
                     </p>
                     {
+                        !idTime && del.userId == user.id ? <button className={"button"} onClick={async() => {
+                            const res = await fetch("http://localhost:3000/book/" + del.bookId, {
+                                method: "DELETE",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })
+                            close()
+                            close()
+                        }}>Отменить бронирование</button>: ""
+                    }
+                    {
                         !!idTime && <button className={"button"} onClick={async() => {
                             const form = {
                                 done: false,
                                 time: idTime,
                                 pole: pole.idPole,
-                                dateBook: dateBook
+                                dateBook: dateBook,
+                                userName: user.username,
                             };
     
                             const res = await fetch("http://localhost:3000/book", {

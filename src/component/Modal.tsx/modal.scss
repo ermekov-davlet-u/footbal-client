@@ -64,6 +64,7 @@ $main-color: #9191E9;
     width: 30%;
     height: 100%;
     padding: 2rem;
+    min-width: 320px;
     @media screen and (max-width: 800px) {
       width: 100%;
       height: auto;

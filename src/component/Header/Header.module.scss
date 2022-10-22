@@ -43,7 +43,7 @@
 }
 .header_icons{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr ;
     grid-gap: 12px;
     margin-right: 12px;
 }
@@ -70,11 +70,14 @@
 .wrapper {
     display: inline-flex;
     list-style: none;
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
   }
   
   .wrapper .icon {
     position: relative;
-    background: #ffffff;
+    background: #af3f3f;
     border-radius: 50%;
     padding: 8px;
     margin: 10px;
