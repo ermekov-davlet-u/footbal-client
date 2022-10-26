@@ -12,6 +12,8 @@ import ClubForm from './pages/form/Club';
 import LoginPage from './pages/form/Login';
 import { useAppDispatch } from './store/hook';
 import { newUser } from './store/slice/userSlice';
+import ClubMap from './pages/ClubMap';
+
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,6 +41,7 @@ function App() {
           <Route path="/forme" element={<Adding />}>
             <Route path="club" element={<ClubForm />} />
           </Route>
+          <Route path="map" element={<ClubMap />} />
         </Routes>
       </BrowserRouter>
 

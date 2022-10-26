@@ -7,12 +7,15 @@
     width: 400px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .inp_label{
     font-size: 18px;
     margin-right: 12px;
     width: 120px;
     text-align: left;
+    z-index: 1;
+    transition: .28s ease-in;
 }
 .inp{
     padding: 8px 12px 6px 6px;
@@ -25,4 +28,16 @@
     color: #ccc;
     letter-spacing: 1px;
     border-left: 1px solid grey;
+    z-index: 2;
+    transition: .28s ease-in;
+}
+.inp_label_min{
+    width: 0;
+    margin: 0;
+    transition: .28s ease-in;
+}
+.inp_active{
+    width: 100%;
+    background-color: rgb(49, 49, 49);
+    transition: .28s ease-in;
 }

@@ -1,6 +1,7 @@
 import classes from "./Input.module.scss"
 import "../../style/adding.scss"
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
+import classNames from "classnames";
 
 interface IFormInputPropType{
     type?: string;
@@ -17,14 +18,24 @@ function FormInput({
     changeInp= () => {},
     value= ""
 }: IFormInputPropType) {
+
+    const [ focus, setFocus ] = useState(false)
+
+    function onFocused(){
+        setFocus(true)
+    }
+    function onBlured(){
+        setFocus(false)
+    }
+
     return ( 
         <div className={classes.imp_wrap}>
-            <label htmlFor="" className={classes.inp_label}>
+            <label htmlFor="" className={classNames(classes.inp_label, focus && classes.inp_label_min)}>
                 {
                     label
                 }
             </label>
-            <input type={type} placeholder={placeHolder} value={value} className={classes.inp} onInput={(e: ChangeEvent<HTMLInputElement>) => {
+            <input onFocus={onFocused}  onBlur={onBlured} type={type} placeholder={placeHolder} value={value} className={classNames(classes.inp, focus && classes.inp_active)} onInput={(e: ChangeEvent<HTMLInputElement>) => {
                 changeInp(e.target.value);
             }}/>
         </div>

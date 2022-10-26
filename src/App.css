@@ -142,3 +142,14 @@
 .demand_flex_row_text{
     color: black;
 }
+.map{
+    width: calc(100vw - 86px);
+    height: calc(100vh - 2rem - 110px);
+    z-index: 1;
+}
+.map_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 110px;
+}

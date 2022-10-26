@@ -54,7 +54,7 @@ function ConfirmModal({
             <div className="popup" id="popup" style={show? style.show : style.hide}>
                 <div className="popup-inner">
                 <div className="popup__photo">
-                    <img src={"http://localhost:3000/photos/get/" + pole.photos[0]?.url} alt="" />
+                    <img src={"http://localhost:6100/photos/get/" + pole.photos[0]?.url} alt="" />
                 </div>
                 <div className="popup__text">
                     <h1>Забронировать поле </h1>
@@ -66,7 +66,7 @@ function ConfirmModal({
                     </p>
                     {
                         !idTime && del.userId == user.id ? <button className={"button"} onClick={async() => {
-                            const res = await fetch("http://localhost:3000/book/" + del.bookId, {
+                            const res = await fetch("http://localhost:6100/book/" + del.bookId, {
                                 method: "DELETE",
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ function ConfirmModal({
                                 userName: user.username,
                             };
     
-                            const res = await fetch("http://localhost:3000/book", {
+                            const res = await fetch("http://localhost:6100/book", {
                                 method: "POST",
                                 headers: {
                                     'Content-Type': 'application/json'

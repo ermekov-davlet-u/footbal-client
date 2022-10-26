@@ -19,7 +19,7 @@ function    TSportCard({
     return ( 
         <section className={classNames(classes.tscard, selected? classes.tscard_active : "")}>
             <div className={classes.stcard_bg}>
-                <img src={"http://localhost:3000/photos/get/" + photo} alt="Не удалось найти картинку" className={classes.tscard_bg_img} />
+                <img src={"http://localhost:6100/photos/get/" + photo} alt="Не удалось найти картинку" className={classes.tscard_bg_img} />
             </div>
             <div className={classes.container}>
                 <h3 className={classes.title}>

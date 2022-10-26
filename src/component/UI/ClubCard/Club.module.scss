@@ -1,0 +1,121 @@
+.clubcard{
+    margin-top: 48px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+.clubcard_container{
+    height: 400px;
+    // max-width: 1002px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 34px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-column-gap: 34px;
+        height: auto;
+    }
+}
+.clubcard__bgimg{
+    max-width: 600px;
+    height: 400px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    overflow: hidden;
+}
+.clubcard__img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.clubcard_content{
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 2fr minmax(48px, 48px);
+}
+.clubcard_top{
+    width: calc(100% - 48px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+.clubcard_subtitle{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    color: #6E798C;
+}
+.clubcard_top_text{
+    color: #081F32;
+}
+.clubcard_title{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    color: #081F32;
+    margin-bottom: 14px;
+}
+.clubcard_text{
+    color: #081F32;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+.clubcard_bottom{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.clubcard_user{
+    display: flex;
+    align-items: center;
+    padding: 3px 12px;
+    &:hover{
+        background-color: #081F32;
+        cursor: pointer;
+    }
+}
+.user_imagewrap{
+    height: 40px;
+    width: 40px;
+    max-height: 40px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.user_image{
+    max-height: 100%;
+    height: 100%;
+    height: auto;
+}
+.user_text{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #007AE9;
+    margin-left: 12px;
+}
+.clubcard_show{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #007AE9;
+    border: none;
+    &:hover{
+        color: #081F32;
+        cursor: pointer;
+    }
+}

@@ -2,7 +2,7 @@
 import FormInput from './../../component/input/FormInput';
 import { useState } from 'react';
 import Button from './../../component/button/Button';
-import ImageSlider from '../../component/slider/image/ImageSlider';
+import ClubCard from '../../component/UI/ClubCard/ClubCard';
 
 interface IClubForm {
     clubName: string,
@@ -28,7 +28,7 @@ function ClubForm() {
         })
     }
     async function createClub(){
-        const res = await fetch("http://localhost:3000/club", {
+        const res = await fetch("http://localhost:6100/club", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -37,8 +37,13 @@ function ClubForm() {
             mode: "cors",
             body: JSON.stringify(clubForm)
         }).then(res => res.json());
-        console.log(res);
-        
+        if(res?.idClub){
+            setclubForm({
+                clubName: '',
+                adres: ''
+            }) 
+            
+        }        
     }
 
     return ( 
@@ -51,7 +56,11 @@ function ClubForm() {
             </div>
             <Button label='Добавить' btnClick={createClub} />
 
-            
+            <ClubCard />
+            <ClubCard />
+            <ClubCard />
+            <ClubCard />
+            <ClubCard />
         </>
      );
 }

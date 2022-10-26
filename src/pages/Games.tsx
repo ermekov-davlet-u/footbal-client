@@ -58,7 +58,7 @@ function Games() {
         setWeekDay(a);
     }
     async function getBook() {
-        const res = await fetch("http://localhost:3000/book", {
+        const res = await fetch("http://localhost:6100/book", {
             headers: {
                 Authentication: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjQ5Nzc0OTgsImV4cCI6MTY2NDk3NzU1OH0.JjHixJ7eeC0_3LMPTCX0elsRozJ5J5OA9XgddQkdquA'
             }
@@ -67,17 +67,17 @@ function Games() {
     } 
 
     async function getBookByPole(id: number) {
-        const res = await fetch("http://localhost:3000/book/" + id).then(res => res.json());
+        const res = await fetch("http://localhost:6100/book/" + id).then(res => res.json());
         dispatch(newBooks(res))
     } 
 
     async function getPoles() {
-        const res = await fetch("http://localhost:3000/pole").then(res => res.json());
+        const res = await fetch("http://localhost:6100/pole").then(res => res.json());
         dispatch(newPoles(res))
     } 
 
     async function getAllTime(){
-        const times = await fetch("http://localhost:3000/time", {
+        const times = await fetch("http://localhost:6100/time", {
             headers: {
                 "Authorization": "Bearer " + user.access_token,
                 'Content-Type': 'application/json'
@@ -254,6 +254,7 @@ function Games() {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </>
      );
