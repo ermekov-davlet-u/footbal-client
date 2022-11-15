@@ -1,27 +1,48 @@
+import { Link } from "react-router-dom";
+import { IClubForm } from "../../../pages/form/Club";
+import { ClubCardType, IPolePhotoType } from "../../../store/models";
 import classes from "./Club.module.scss";
 
-function ClubCard() {
+
+
+function ClubCard({
+    clubName,
+    adres,
+    desc,
+    idClub,
+    isActive,
+    photos = []
+}: ClubCardType) {
     return ( 
         <article className={classes.clubcard}>
             <div className={classes.clubcard_container}>
                 <div className={classes.clubcard__bgimg}>
-                    <img src="/images/slide1.jpg" className={classes.clubcard__img}/>
+                    {
+                        photos[0]?.url && 
+                            <img src={"http://localhost:6100/club-photo/get/" + photos[0]?.url} className={classes.clubcard__img}/>
+                        
+                    }
                 </div>
                 <div className={classes.clubcard_content}>
                     <div className={classes.clubcard_top}>
                         <h3 className={classes.clubcard_subtitle}>
-                            PRODUCTIVITY
+                            {
+                                adres
+                            }
                         </h3>
                         <p className={classes.clubcard_top_text}>
                             3 days ago
                         </p>
                     </div>
                     <h2 className={classes.clubcard_title}>
-                        7 Skills of Highly Effective Programmers
+                        {
+                            clubName
+                        }
                     </h2>
                     <div className={classes.clubcard_text}>
-                        Our team was inspired by the seven skills of highly effective programmers created by the TechLead. We wanted to 
-                        provide our own take on the topic. Here are our seven skills of effective programmers...
+                        {
+                            desc
+                        }
                     </div>
                     <div className={classes.clubcard_bottom}>
                         <div className={classes.clubcard_user}>
@@ -32,9 +53,9 @@ function ClubCard() {
                                     Glen Williams
                             </p>
                         </div>
-                        <button className={classes.clubcard_show}>
+                        <Link to={"/club/" + idClub} className={classes.clubcard_show}>
                             Show more
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

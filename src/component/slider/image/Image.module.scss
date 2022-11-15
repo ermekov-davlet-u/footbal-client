@@ -6,16 +6,22 @@
     min-height: 820px;
     border-radius: 10px;
     overflow: hidden;
+    @media screen and (max-width: 767px) {
+        min-height: 381px;
+        max-width: calc(100% - 24px);
+    }
 }
 .slider_elems{
 
 }
 .slider_elem{
     position: absolute;
-    width: 100%;
-    height: auto;
+    min-width: 100%;
+    width: auto;
+    height:     100%;
     opacity: 0;
     transition: all 0.2s ease-in-out;
+    object-fit: cover;
     &_enabled{
         opacity: 1;
     }

@@ -3,7 +3,7 @@ import "../../style/adding.scss"
 import { ChangeEvent, useState } from "react";
 import classNames from "classnames";
 
-interface IFormInputPropType{
+export interface IFormInputPropType{
     type?: string;
     label?: string;
     placeHolder?: string;
@@ -13,8 +13,8 @@ interface IFormInputPropType{
 
 function FormInput({
     type = "",
-    label = "text",
-    placeHolder= "",
+    label = "Заголовок",
+    placeHolder= "Введите текст",
     changeInp= () => {},
     value= ""
 }: IFormInputPropType) {

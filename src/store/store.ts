@@ -4,6 +4,7 @@ import poleReducer from "./slice/poleSlice"
 import timeReducer from "./slice/timeSlice"
 import userReducer from "./slice/userSlice"
 import bookReducer from "./slice/bookSlice"
+import clubReducer from "./slice/clubSlice"
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     time: timeReducer,
     user: userReducer,
     book: bookReducer,
+    club: clubReducer
   },
 })
 

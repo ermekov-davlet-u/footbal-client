@@ -4,9 +4,10 @@
     padding: 0;
 }
 
+
+
 .game{
     max-width: 100%;
-    
     width: 1840px;
     margin: 0 auto;
     padding: 0 24px;
@@ -152,4 +153,15 @@
     justify-content: center;
     align-items: center;
     padding-top: 110px;
+}
+.form{
+    
+}
+.clubShow{
+    margin-top: 140px;
+}
+.clubShow_book{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

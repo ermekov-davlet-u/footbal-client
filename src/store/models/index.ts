@@ -1,3 +1,4 @@
+import { IClubForm } from "../../pages/form/Club"
 
 
 export interface ITime{
@@ -43,3 +44,9 @@ export interface IBookType {
         id: number
     }
 } 
+
+export interface ClubCardType extends IClubForm {
+    idClub: number
+    isActive: boolean
+    photos?: IPolePhotoType[]
+}

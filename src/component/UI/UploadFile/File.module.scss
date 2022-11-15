@@ -1,0 +1,32 @@
+.uploader{
+    margin: 12px auto;
+}
+.title{
+    font-size: 24px;
+    width: 400px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fileWrap{
+    font-size: 24px;
+    width: 400px;
+    height: 220px;
+    border: 2px dotted #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: 1s linear 0s normal infinite running rot;
+}
+@keyframes rot {
+    0% {
+      opacity: .4;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .4;
+    }
+  }

@@ -146,6 +146,7 @@ function Games() {
       useEffect(() => {
         if(pole.length){
             hundlePole(pole[0])
+            getBookByPole(pole[0].idPole)
         }
       }, [pole])
 
@@ -205,8 +206,6 @@ function Games() {
                                                             return (new Date(b.dateBook).toLocaleDateString() == day.toLocaleDateString() && b.time.idTime == time.idTime)
                                                             }
                                                         )
-                                                        console.log(a);
-                                                        
                                                         if(a){
                                                             return (
                                                                 <div key={time.idTime} className="table_row active" onClick={() => {

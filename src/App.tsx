@@ -13,6 +13,7 @@ import LoginPage from './pages/form/Login';
 import { useAppDispatch } from './store/hook';
 import { newUser } from './store/slice/userSlice';
 import ClubMap from './pages/ClubMap';
+import ClubShow from './pages/ClubShow';
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path="club" element={<ClubForm />} />
           </Route>
           <Route path="map" element={<ClubMap />} />
+          <Route path="club/:idClub" element={<ClubShow/>} />
         </Routes>
       </BrowserRouter>
 

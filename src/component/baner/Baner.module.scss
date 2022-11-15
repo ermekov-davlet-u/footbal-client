@@ -50,3 +50,58 @@
     font-size: 18px;
     font-weight: 100;
 }
+.section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: rgb(118, 112, 122);
+    max-width: 100%;
+    margin-bottom: 150px;
+    .sectionContainer {
+        padding: 24px 12px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .content {
+        margin-right: 86px;
+        text-align: left;
+    }
+    .title {
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 55px;
+        letter-spacing: 0.2px;
+        color: #252B42;
+        margin: 12px 0;
+    }
+    .text {
+        font-size: 28px;
+        line-height: 40px;
+        letter-spacing: 0.2px;
+        color: #374754;
+        margin-bottom: 8px;
+    }
+    .form_groups{
+        margin-top: 8px;
+    }
+    .btnMore{
+        padding: 16px 0px;
+        width: 236px;
+        height: 60px;
+        background: #2091F9;
+        border-radius: 35px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        box-shadow: 1px 2px 4px #2091F9;
+    }
+    .bg{
+        max-width: 780px;
+    }
+    .bgImage{
+        max-width: 100%;
+        object-fit: cover;
+        max-height: 480px;
+    }
+}
